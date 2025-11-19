@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoPort • Dashboard Ambiental</title>
+
+    <!-- ESTILOS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- FONTE -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- CHART.JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <!-- ===========================
+         HEADER
+    ============================ -->
+    <div class="header">
+        <h1 class="header-title">🌿 EcoPort — Dashboard Ambiental</h1>
+        <p>Monitoramento em tempo real dos resíduos gerados no porto.</p>
+    </div>
+
+    <!-- ===========================
+         KPIs
+    ============================ -->
+    <div class="kpi-container">
+        <div class="kpi-card">
+            <div class="kpi-title">Total de Resíduos (Mês)</div>
+            <div class="kpi-value" id="kpi_total_residuos">0 tons</div>
+        </div>
+
+        <div class="kpi-card">
+            <div class="kpi-title">Resíduos Oleosos</div>
+            <div class="kpi-value" id="kpi_oleosos">—</div>
+        </div>
+
+        <div class="kpi-card">
+            <div class="kpi-title">Resíduos Contaminados</div>
+            <div class="kpi-value" id="kpi_contaminados">—</div>
+        </div>
+
+        <div class="kpi-card">
+            <div class="kpi-title">Resíduos Orgânicos</div>
+            <div class="kpi-value" id="kpi_organicos">—</div>
+        </div>
+    </div>
+
+    <!-- ===========================
+         GRÁFICO
+    ============================ -->
+    <div class="chart-box">
+        <h2>📈 Evolução Mensal dos Resíduos</h2>
+        <canvas id="chart1" height="90"></canvas>
+    </div>
+
+    <!-- ===========================
+         TABELA
+    ============================ -->
+    <div class="table-box">
+        <h2>📋 Registros de Resíduos</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Quantidade</th>
+                    <th>Tecnologia</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-body"></tbody>
+        </table>
+    </div>
+
+    <!-- ===========================
+         FORMULÁRIO DE REGISTRO
+    ============================ -->
+    <div class="form-box">
+        <h2>➕ Registrar Novo Resíduo</h2>
+
+        <label>Tipo de Resíduo</label>
+        <select id="tipo">
+            <option value="Orgânico">Orgânico</option>
+            <option value="Oleoso">Oleoso</option>
+            <option value="Contaminado">Contaminado</option>
+            <option value="Reciclável">Reciclável</option>
+        </select>
+
+        <label>Quantidade (tons)</label>
+        <input type="number" id="quantidade" placeholder="Ex.: 3.5">
+
+        <label>Tecnologia de Destinação</label>
+        <select id="tecnologia">
+            <option value="Compostagem">Compostagem</option>
+            <option value="Coprocessamento">Coprocessamento</option>
+            <option value="Aterro Industrial">Aterro Industrial</option>
+            <option value="Reciclagem">Reciclagem</option>
+            <option value="Tratamento Químico">Tratamento Químico</option>
+        </select>
+
+        <button id="btnSalvar">Salvar Registro</button>
+    </div>
+
+    <!-- ===========================
+         SCRIPTS
+    ============================ -->
+    <script type="module" src="supabaseClient.js"></script>
+    <script type="module" src="main.js"></script>
+
+</body>
+</html>
